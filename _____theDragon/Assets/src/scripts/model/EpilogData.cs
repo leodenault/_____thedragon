@@ -4,7 +4,7 @@ using UnityEngine;
 public class EpilogData
 {
 	private IDecisionTreeState [] s1;
-	public EpilogData (ChoiceTracker s)
+	public EpilogData (IChoiceTracker s)
 	{
 		s1 = s.GetStates ();
 	}
@@ -15,7 +15,7 @@ public class EpilogData
 		int n = s1.Length;
 		while(i < n)
 		{ 
-			s = s + s1[i].GetStateInfo();
+			s = s + s1[i].GetStateEpilogue();
 			s = "\n\n";
 			i++;
 		}

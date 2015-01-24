@@ -8,14 +8,21 @@ public static class DecisionTree {
 	private static IDecisionTreeState dragon;
 	
 	private static IDecisionTreeState current;
+
 	private static bool init = false;
+
+	private static ChoiceTracker choiceTracker;
+	private static EpilogData epilogData;
+	
 	public static void Init() {
-		if(!init)
-		{
-		stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
-		initStates();
-		setupChoices();
-		init = true;
+		if (!init) {
+			stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
+			choiceTracker = new ChoiceTracker();
+			epilogData = new EpilogData(choiceTracker);
+			
+			initStates();
+			setupChoices();
+			init = true;
 		}
 	}
 	
@@ -47,8 +54,6 @@ public static class DecisionTree {
 	
 	public static void selectChoice(string choice) {
 		current = stateChoiceToState[current][choice];
-		
-	
 	}
 	
 	public static bool IsCurrentState(string id) {

@@ -11,7 +11,7 @@ public class DecisionTreeState : IDecisionTreeState {
 		this.choices = new List<string>();
 	}
 	
-	public string GetStateInfo() {
+	public string GetStateEpilogue() {
 		return info;
 	}
 	
