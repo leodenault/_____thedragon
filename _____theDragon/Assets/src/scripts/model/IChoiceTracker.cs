@@ -1,4 +1,4 @@
 ﻿public interface IChoiceTracker {
-	IDecisionTreeState[] getStates();
-	void addState(IDecisionTreeState id);
+	IDecisionTreeState[] GetStates();
+	void AddState(IDecisionTreeState id);
 }
