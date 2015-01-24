@@ -8,7 +8,7 @@ public static class DecisionTree {
 	
 	private static IDecisionTreeState current;
 	
-	private bool initialized = false;
+	private static bool initialized = false;
 	
 	public static void Init() {
 		if (!initialized) {
