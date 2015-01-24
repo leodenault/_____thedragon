@@ -11,7 +11,10 @@ public class CharacterControls : MonoBehaviour {
 	float buffer = 0.2f;
 	void Start () 
 	{
-		
+		//Debug.Log(ApplicationModel.fromDoor);
+		if(ApplicationModel.fromDoor)
+		goToDoor();
+
 		getEdges();
 	}
 	
@@ -20,7 +23,25 @@ public class CharacterControls : MonoBehaviour {
 	{
 		Camera.main.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
 	}
-
+	void goToDoor() // teleports playre to door when they enter the scene from a door
+	{
+		GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
+		Debug.Log(doors.Length);
+		foreach(GameObject d in doors)
+		{
+		
+			Door dor = d.GetComponent<Door>();
+			if(dor != null)
+			{
+				if(dor.thisDoorNum == ApplicationModel.door)
+				{				
+					transform.position = new Vector3(d.transform.GetChild(0).position.x, d.transform.GetChild(0).position.y, transform.position.z);
+					break;
+				}
+			}
+		
+		}
+	}
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
