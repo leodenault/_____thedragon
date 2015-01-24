@@ -9,20 +9,33 @@ public class CharacterControls : MonoBehaviour {
 	public Transform tile;
 	public bool transistioning;
 	public float speed;
+	bool grabCamX,grabCamY;
+	Vector3 pos;
 	float buffer = 0.175f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
 		if(ApplicationModel.fromDoor)
 		goToDoor();
-
+		grabCamX = true;
+		grabCamY = true;
+		pos = new Vector3(transform.position.x,transform.position.y,-10);
 		getEdges();
 	}
 
 	// Update is called once per frame
 	void Update () 
 	{
-		Camera.main.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
+		if(!transistioning)
+		{
+		if(grabCamX)
+		pos.x = transform.position.x;
+		if(grabCamY)
+		pos.y = transform.position.y;
+
+
+		Camera.main.transform.position = pos; 
+		}
 	}
 	void goToDoor() // teleports playre to door when they enter the scene from a door
 	{
@@ -49,14 +62,24 @@ public class CharacterControls : MonoBehaviour {
 		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical" ), 0); 
 		if(!transistioning)
 		{
-			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer)) 
+			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
 			{
-				moveDir.x = 0;
+				grabCamX = false;//moveDir.x = 0;
 			}
-
-			if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer)) 
+			else 
 			{
-				moveDir.y = 0;
+				if((moveDir.x < 0 && transform.position.x <= max.x - buffer) || (moveDir.x > 0 && transform.position.x >= min.x + buffer))
+				grabCamX = true;	
+			}
+			
+			if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer))
+			{
+				grabCamY = false;
+			} 
+			else 
+			{
+				if((moveDir.y < 0 && transform.position.y <= max.y - buffer) || (moveDir.y > 0 && transform.position.y >= min.y + buffer))
+				grabCamY = true;
 			}
 				transform.position+= moveDir;
 		}
