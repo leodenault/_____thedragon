@@ -9,8 +9,9 @@ public class Door : MonoBehaviour {
 	public int thisDoorNum; 
 	public float tSize = 0.2f,rate = 0.04f;
 	public bool transistioning;
-	public bool forwardT,downT;
+	public int tX,tY,tZ;
 	public int transTime;
+	float moveR = 0.1f;
 	int tTime;
 	Transform player;
 	void Start () 
@@ -27,27 +28,27 @@ public class Door : MonoBehaviour {
 	{
 		if(transistioning)
 		{
-			
+			player.GetComponent<BoxCollider2D>().enabled = false;
 			if(tTime <= 0)
 			{
-				player.transform.localScale = new Vector3(1,1,1);
+				player.localScale = new Vector3(1,1,1);
 				Application.LoadLevel(SceneName);
 				transistioning = false;
 				player.GetComponent<CharacterControls>().transistioning = false;
+				player.GetComponent<BoxCollider2D>().enabled = true;
 			}
 			else
 			{
-				if(forwardT)
+				if(tZ != 0)
 				{
-				player.transform.localScale-=new Vector3(rate,rate,0);
-				player.transform.position+=new Vector3(0,0.02f,0);
+				player.transform.localScale-=new Vector3(rate * tZ,rate * tZ,0);
+				player.transform.position+=new Vector3(0,0.02f * tY,0);
 				}
 				else
 				{
-					if(downT)
-					{
-						player.transform.position+=new Vector3(0,0.05f,0);
-					}
+					
+						player.transform.position+=new Vector3(moveR * tX,moveR * tY,0);
+					
 				}
 			tTime--;
 			}
