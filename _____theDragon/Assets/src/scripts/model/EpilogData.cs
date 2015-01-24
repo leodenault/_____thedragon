@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EpilogData: ChoiceTracker {
+public class EpilogData
+{
 	private IDecisionTreeState [] s1;
-	public EpilogData ()
+	public EpilogData (ChoiceTracker s)
 	{
+		s1 = s.GetStates ();
 	}
 	public void print_epilog()
 	{
 		int i = 0;
 		string s = "Wowww. You have been through the following worlds in your journey..!!!\n\n";
-		s1 = GetStates ();
 		int n = s1.Length;
 		while(i < n)
 		{ 
