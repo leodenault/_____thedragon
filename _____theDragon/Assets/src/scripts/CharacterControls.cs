@@ -7,21 +7,35 @@ public class CharacterControls : MonoBehaviour {
 	Vector2 offset;
 	Vector2 max, min;
 	public Transform tile;
+	public bool transistioning;
 	public float speed;
+	bool grabCamX,grabCamY;
+	Vector3 pos;
 	float buffer = 0.175f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
 		if(ApplicationModel.fromDoor)
 		goToDoor();
-
+		grabCamX = true;
+		grabCamY = true;
+		pos = new Vector3(transform.position.x,transform.position.y,-10);
 		getEdges();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
-		Camera.main.transform.position = new Vector3(transform.position.x,transform.position.y,-10);
+		if(!transistioning)
+		{
+		if(grabCamX)
+		pos.x = transform.position.x;
+		if(grabCamY)
+		pos.y = transform.position.y;
+
+
+		Camera.main.transform.position = pos; 
+		}
 	}
 	void goToDoor() // teleports playre to door when they enter the scene from a door
 	{
@@ -46,17 +60,30 @@ public class CharacterControls : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical" ), 0); 
-		if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer)) 
+		if(!transistioning)
 		{
-			moveDir.x = 0;
+			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
+			{
+				grabCamX = false;//moveDir.x = 0;
+			}
+			else 
+			{
+				if((moveDir.x < 0 && transform.position.x <= max.x - buffer) || (moveDir.x > 0 && transform.position.x >= min.x + buffer))
+				grabCamX = true;	
+			}
+			
+			if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer))
+			{
+				grabCamY = false;
+			} 
+			else 
+			{
+				if((moveDir.y < 0 && transform.position.y <= max.y - buffer) || (moveDir.y > 0 && transform.position.y >= min.y + buffer))
+				grabCamY = true;
+			}
+				transform.position+= moveDir;
 		}
-
-		if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer)) 
-		{
-			moveDir.y = 0;
-		}
-
-		transform.position+= moveDir; 
+	 
 	}
 
 	public void getEdges() // finds the world position of the walls around the  tile for collision
@@ -64,7 +91,7 @@ public class CharacterControls : MonoBehaviour {
 		offset = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize); 
 		max = new Vector2((tile.position.x + (tile.localScale.x / 2f)) - offset.x, (tile.position.y + (tile.localScale.y / 2f)) - offset.y);
 		min = new Vector2((tile.position.x - (tile.localScale.x / 2f)) + offset.x, (tile.position.y - (tile.localScale.y / 2f)) + offset.y);
-		Debug.Log(min);
+		//Debug.Log(min);
 	}
 
 	void OnTriggerStay2D(Collider2D  col)
