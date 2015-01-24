@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 
+
 public static class DecisionTree {
 	private static IDictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>> stateChoiceToState;
 	
@@ -7,15 +8,14 @@ public static class DecisionTree {
 	private static IDecisionTreeState dragon;
 	
 	private static IDecisionTreeState current;
-	
-	private static bool initialized = false;
-	
+	private static bool init = false;
 	public static void Init() {
-		if (!initialized) {
-			stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
-			initStates();
-			setupChoices();
-			initialized = true;
+		if(!init)
+		{
+		stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
+		initStates();
+		setupChoices();
+		init = true;
 		}
 	}
 	
@@ -45,11 +45,14 @@ public static class DecisionTree {
 		return current.GetChoices();
 	}
 	
-	public static void SelectChoice(string choice) {
+	public static void selectChoice(string choice) {
 		current = stateChoiceToState[current][choice];
+		
+	
 	}
 	
 	public static bool IsCurrentState(string id) {
+
 		return current.GetId().Equals(id);
 	}
 }
