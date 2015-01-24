@@ -40,7 +40,7 @@ public static class DecisionTree {
 		return current.GetChoices();
 	}
 	
-	public static void selectChoice(string choice) {
+	public static void SelectChoice(string choice) {
 		current = stateChoiceToState[current][choice];
 	}
 	
