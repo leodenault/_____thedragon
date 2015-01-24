@@ -56,7 +56,7 @@ public class DialogueStructure : MonoBehaviour {
 		int lineNum = 0; //how many lines of text are currently displayed
 		int charNum = 0; //how many characters are currently displayed
 		while (!done) {
-			if (Input.GetKey(KeyCode.Return) {
+			if (Input.GetKey(KeyCode.Return)) {
 				while (lineNum < 2) {
 					charNum = getNumChars(dialogueNumber, dialogueMarker);
 					print (dialogue.Substring (dialogueMarker, charNum));
