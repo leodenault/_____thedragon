@@ -8,10 +8,15 @@ public static class DecisionTree {
 	
 	private static IDecisionTreeState current;
 	
+	private bool initialized = false;
+	
 	public static void Init() {
-		stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
-		initStates();
-		setupChoices();
+		if (!initialized) {
+			stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
+			initStates();
+			setupChoices();
+			initialized = true;
+		}
 	}
 	
 	private static void initStates() {
