@@ -65,4 +65,19 @@ public class CharacterControls : MonoBehaviour {
 		max = new Vector2((tile.position.x + (tile.localScale.x / 2f)) - offset.x, (tile.position.y + (tile.localScale.y / 2f)) - offset.y);
 		min = new Vector2((tile.position.x - (tile.localScale.x / 2f)) + offset.x, (tile.position.y - (tile.localScale.y / 2f)) + offset.y);
 	}
+
+	void OnTriggerStay2D(Collider2D  col)
+	{
+
+		
+		if(col.tag == "Interactable")
+		{
+			
+			if(Input.GetAxis("Interact") != 0)
+			{
+				
+				col.transform.SendMessage("Interaction");
+			}
+		}
+	}
 }

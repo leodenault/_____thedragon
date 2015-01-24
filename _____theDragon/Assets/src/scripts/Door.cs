@@ -19,7 +19,7 @@ public class Door : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D  col)
 	{
-		if(col.transform.tag == "Player")
+		if(col.transform.tag == "Player" && !col.isTrigger)
 		{
 			ApplicationModel.door = nextDoorNum;
 			ApplicationModel.fromDoor = true;
