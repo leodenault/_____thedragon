@@ -9,10 +9,9 @@ public class EpilogData: ChoiceTracker {
 	public void print_epilog()
 	{
 		int i = 0;
-		int n = s1.Length;
 		string s = "Wowww. You have been through the following worlds in your journey..!!!\n\n";
 		s1 = GetStates ();
-
+		int n = s1.Length;
 		while(i < n)
 		{ 
 			s = s + s1[i].GetStateInfo();
