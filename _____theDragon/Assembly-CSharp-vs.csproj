@@ -51,7 +51,10 @@
      <Compile Include="Assets\src\scripts\DialogueDisplay.cs" />
      <Compile Include="Assets\src\scripts\DialogueStructure.cs" />
      <Compile Include="Assets\src\scripts\Door.cs" />
+     <Compile Include="Assets\src\scripts\model\ChoiceTracker.cs" />
+     <Compile Include="Assets\src\scripts\model\DecisionTreeState.cs" />
      <Compile Include="Assets\src\scripts\model\IChoiceTracker.cs" />
+     <Compile Include="Assets\src\scripts\model\IDecisionTreeState.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>
