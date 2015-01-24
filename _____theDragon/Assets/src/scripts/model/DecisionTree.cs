@@ -1,4 +1,4 @@
 ﻿public interface IChoiceTracker {
-	public string[] getChoiceIds();
-	public void addChoice(string id);
+	string[] getChoiceIds();
+	void addChoice(string id);
 }
