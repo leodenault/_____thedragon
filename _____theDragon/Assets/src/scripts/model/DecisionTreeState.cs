@@ -2,15 +2,21 @@
 
 public class DecisionTreeState : IDecisionTreeState {
 	private string info;
+	private string id;
 	private List<string> choices;
 	
-	public DecisionTreeState(string info) {
+	public DecisionTreeState(string id, string info) {
+		this.id = id;
 		this.info = info;
 		this.choices = new List<string>();
 	}
 	
 	public string GetStateInfo() {
 		return info;
+	}
+	
+	public string GetId() {
+		return id;
 	}
 	
 	public void AddChoice(string choice) {
