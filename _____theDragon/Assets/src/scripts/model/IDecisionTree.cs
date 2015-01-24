@@ -1,3 +1,3 @@
 ﻿public interface IDecisionTreeState{
-	string getStateInfo();
+	string GetStateInfo();
 }

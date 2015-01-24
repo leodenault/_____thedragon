@@ -7,11 +7,11 @@ public class ChoiceTracker : IChoiceTracker {
 		this.states = new List<IDecisionTreeState>();
 	}
 	
-	public IDecisionTreeState[] getStates() {
+	public IDecisionTreeState[] GetStates() {
 		return states.ToArray();
 	}
 	
-	public void addState(IDecisionTreeState state) {
+	public void AddState(IDecisionTreeState state) {
 		states.Add(state);
 	}
 }
