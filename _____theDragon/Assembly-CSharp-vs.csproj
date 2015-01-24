@@ -52,9 +52,11 @@
      <Compile Include="Assets\src\scripts\DialogueStructure.cs" />
      <Compile Include="Assets\src\scripts\Door.cs" />
      <Compile Include="Assets\src\scripts\model\ChoiceTracker.cs" />
+     <Compile Include="Assets\src\scripts\model\DecisionTree.cs" />
      <Compile Include="Assets\src\scripts\model\DecisionTreeState.cs" />
      <Compile Include="Assets\src\scripts\model\IChoiceTracker.cs" />
      <Compile Include="Assets\src\scripts\model\IDecisionTreeState.cs" />
+     <Compile Include="Assets\wallCollision.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.1/UnityEngine.UI.dll</HintPath>
  </Reference>

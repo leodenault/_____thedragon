@@ -9,6 +9,9 @@ public class Door : MonoBehaviour {
 	public int thisDoorNum; 
 	public float tSize = 0.2f,rate = 0.04f;
 	public bool transistioning;
+	public bool forwardT,downT;
+	public int transTime;
+	int tTime;
 	Transform player;
 	void Start () 
 	{
@@ -25,7 +28,7 @@ public class Door : MonoBehaviour {
 		if(transistioning)
 		{
 			
-			if(player.transform.localScale.x <= tSize)
+			if(tTime <= 0)
 			{
 				player.transform.localScale = new Vector3(1,1,1);
 				Application.LoadLevel(SceneName);
@@ -34,8 +37,19 @@ public class Door : MonoBehaviour {
 			}
 			else
 			{
-			player.transform.localScale-=new Vector3(rate,rate,0);
-			player.transform.position+=new Vector3(0,0.02f,0);
+				if(forwardT)
+				{
+				player.transform.localScale-=new Vector3(rate,rate,0);
+				player.transform.position+=new Vector3(0,0.02f,0);
+				}
+				else
+				{
+					if(downT)
+					{
+						player.transform.position+=new Vector3(0,0.05f,0);
+					}
+				}
+			tTime--;
 			}
 		}
 
@@ -49,6 +63,7 @@ public class Door : MonoBehaviour {
 			ApplicationModel.fromDoor = true;
 			player = col.transform;
 			transistioning = true;
+			tTime = transTime;
 			player.GetComponent<CharacterControls>().transistioning = true;
 		}
 	}
