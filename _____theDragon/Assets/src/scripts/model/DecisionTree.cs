@@ -53,11 +53,15 @@ public static class DecisionTree {
 	}
 	
 	public static void selectChoice(string choice) {
+		choiceTracker.AddState(current);
 		current = stateChoiceToState[current][choice];
 	}
 	
 	public static bool IsCurrentState(string id) {
-
 		return current.GetId().Equals(id);
+	}
+	
+	public static string GetEpilogue() {
+		return epilogData.print_epilog();
 	}
 }
