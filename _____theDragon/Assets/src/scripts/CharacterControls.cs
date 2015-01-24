@@ -8,7 +8,7 @@ public class CharacterControls : MonoBehaviour {
 	Vector2 max, min;
 	public Transform tile;
 	public float speed;
-	float buffer = 0.2f;
+	float buffer = 0.1f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
