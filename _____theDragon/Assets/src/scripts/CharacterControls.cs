@@ -8,7 +8,7 @@ public class CharacterControls : MonoBehaviour {
 	Vector2 max, min;
 	public Transform tile;
 	public float speed;
-	float buffer = 0.1f;
+	float buffer = 0.175f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
@@ -26,7 +26,7 @@ public class CharacterControls : MonoBehaviour {
 	void goToDoor() // teleports playre to door when they enter the scene from a door
 	{
 		GameObject[] doors = GameObject.FindGameObjectsWithTag("Door");
-		Debug.Log(doors.Length);
+
 		foreach(GameObject d in doors)
 		{
 		
@@ -64,6 +64,7 @@ public class CharacterControls : MonoBehaviour {
 		offset = new Vector2(Camera.main.aspect * Camera.main.orthographicSize, Camera.main.orthographicSize); 
 		max = new Vector2((tile.position.x + (tile.localScale.x / 2f)) - offset.x, (tile.position.y + (tile.localScale.y / 2f)) - offset.y);
 		min = new Vector2((tile.position.x - (tile.localScale.x / 2f)) + offset.x, (tile.position.y - (tile.localScale.y / 2f)) + offset.y);
+		Debug.Log(min);
 	}
 
 	void OnTriggerStay2D(Collider2D  col)
