@@ -39,7 +39,7 @@ public class DialogueStructure : MonoBehaviour {
 			while (!(dialogue[place].Equals (' ')) && dialogue.Length > place) {
 				place++;
 			}
-			if (charNum + place > textWidth || place > dialogue.Length) {
+			if (charNum + place > textWidth || place >= dialogue.Length) {
 				return charNum;
 			} else {
 				charNum = charNum + place;
