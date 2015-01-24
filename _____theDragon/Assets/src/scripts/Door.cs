@@ -33,7 +33,10 @@ public class Door : MonoBehaviour {
 				player.GetComponent<CharacterControls>().transistioning = false;
 			}
 			else
+			{
 			player.transform.localScale-=new Vector3(rate,rate,0);
+			player.transform.position+=new Vector3(0,0.02f,0);
+			}
 		}
 
 	}
