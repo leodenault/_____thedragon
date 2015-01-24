@@ -8,7 +8,7 @@ public class EpilogData
 	{
 		s1 = s.GetStates ();
 	}
-	public void print_epilog()
+	public string print_epilog()
 	{
 		int i = 0;
 		string s = "Wowww. You have been through the following worlds in your journey..!!!\n\n";
@@ -20,6 +20,7 @@ public class EpilogData
 			i++;
 		}
 		Debug.Log (s);
+		return s;
 	}
 }
 
