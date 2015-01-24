@@ -7,6 +7,9 @@ public class Door : MonoBehaviour {
 	public string SceneName;
 	public int nextDoorNum;
 	public int thisDoorNum; 
+	public float tSize = 0.2f,rate = 0.04f;
+	public bool transistioning;
+	Transform player;
 	void Start () 
 	{
 		
@@ -16,16 +19,38 @@ public class Door : MonoBehaviour {
 	void Update () {
 	
 	}
+	
+	void FixedUpdate()
+	{
+		if(transistioning)
+		{
+			
+			if(player.transform.localScale.x <= tSize)
+			{
+				player.transform.localScale = new Vector3(1,1,1);
+				Application.LoadLevel(SceneName);
+				transistioning = false;
+				player.GetComponent<CharacterControls>().transistioning = false;
+			}
+			else
+			player.transform.localScale-=new Vector3(rate,rate,0);
+		}
 
+	}
+	
 	void OnTriggerEnter2D(Collider2D  col)
 	{
 		if(col.transform.tag == "Player" && !col.isTrigger)
 		{
 			ApplicationModel.door = nextDoorNum;
 			ApplicationModel.fromDoor = true;
-			Application.LoadLevel(SceneName);
+			player = col.transform;
+			transistioning = true;
+			player.GetComponent<CharacterControls>().transistioning = true;
 		}
 	}
+
+	
 }
 
 

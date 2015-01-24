@@ -7,6 +7,7 @@ public class CharacterControls : MonoBehaviour {
 	Vector2 offset;
 	Vector2 max, min;
 	public Transform tile;
+	public bool transistioning;
 	public float speed;
 	float buffer = 0.175f;
 	void Start () 
@@ -17,7 +18,7 @@ public class CharacterControls : MonoBehaviour {
 
 		getEdges();
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -46,17 +47,20 @@ public class CharacterControls : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical" ), 0); 
-		if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer)) 
+		if(!transistioning)
 		{
-			moveDir.x = 0;
-		}
+			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer)) 
+			{
+				moveDir.x = 0;
+			}
 
-		if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer)) 
-		{
-			moveDir.y = 0;
+			if((moveDir.y > 0 && transform.position.y >= max.y - buffer) || (moveDir.y < 0 && transform.position.y <= min.y + buffer)) 
+			{
+				moveDir.y = 0;
+			}
+				transform.position+= moveDir;
 		}
-
-		transform.position+= moveDir; 
+	 
 	}
 
 	public void getEdges() // finds the world position of the walls around the  tile for collision
