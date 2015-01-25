@@ -46,13 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\DecisionEffects.cs" />
+     <Compile Include="Assets\InitDecisionTree.cs" />
+     <Compile Include="Assets\TriggerDecision.cs" />
      <Compile Include="Assets\other\testInteraction.cs" />
      <Compile Include="Assets\src\scripts\CharacterControls.cs" />
-     <Compile Include="Assets\src\scripts\DialogueDisplay.cs" />
-     <Compile Include="Assets\src\scripts\DialogueStructure.cs" />
+     <Compile Include="Assets\src\scripts\Dialogue\DialogueDisplay.cs" />
+     <Compile Include="Assets\src\scripts\Dialogue\DialogueStructure.cs" />
+     <Compile Include="Assets\src\scripts\Dialogue\GetTalking.cs" />
      <Compile Include="Assets\src\scripts\Door.cs" />
      <Compile Include="Assets\src\scripts\model\ChoiceTracker.cs" />
+     <Compile Include="Assets\src\scripts\model\DecisionTree.cs" />
      <Compile Include="Assets\src\scripts\model\DecisionTreeState.cs" />
+     <Compile Include="Assets\src\scripts\model\EpilogData.cs" />
      <Compile Include="Assets\src\scripts\model\IChoiceTracker.cs" />
      <Compile Include="Assets\src\scripts\model\IDecisionTreeState.cs" />
  <Reference Include="UnityEngine.UI">
