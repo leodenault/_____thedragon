@@ -26,7 +26,42 @@ public class DialogueDisplay : MonoBehaviour {
 		scrolling = false;
 		displayedChars = 0;
 		dialogue = "";
-		loadarrays ();
+		//loadarrays ();
+		KDialog = new string[7];
+		KDialog [0] = "There have been reports of a disturbance in";
+		KDialog [1] = "in the village outside the grazing plains.";
+		KDialog [2] = "I need you to go investigate.";
+		KDialog [3] = "Do not fail me.";
+		KDialog [4] = "";
+		KDialog [5] = "You make your way back to the king, who rewards you richly";
+		KDialog [6] = "for restoring balance to his kingdom.";
+		EDialog = new string[5];
+		EDialog [0] = "There is a ...... dragon ......";
+		EDialog [1] = "in the ...... please help us ......";
+		EDialog [2] = ". . . You must ...... the dragon.";
+		EDialog [3] = "... .. . .. . . .... ...... .... ... ...............";
+		EDialog [4] = ".......................................";
+		DDialog = new string[20];
+		DDialog [0] = "Oh, hello there. The king must have sent you.";
+		DDialog [1] = "I'm sorry that I've stopped producing gold for the village.";
+		DDialog [2] = "You see, my newest egg didn't hatch, and I am still in mourning.";
+		DDialog [3] = "Please, kind stranger, sing me a lullaby to ease my pain?";
+		DDialog [4] = "";
+		DDialog [5] = "Thank you, kind stranger.";
+		DDialog [6] = "It aches a little less now, I think.";
+		DDialog [7] = "I would like to sing you a song of my own now, as thanks.";
+		DDialog [8] = "";
+		DDialog [9] = "The dragon song settles deep inside your belly,";
+		DDialog [10] = "and you begin to notice strang and wonderful things";
+		DDialog [11] = "changing within you. You close your eyes, and when you open them";
+		DDialog [12] = "You have become a dragon. You open your eyes to a new world,";
+		DDialog [13] = "a new life, and a new level of greatness for you to achieve.";
+		DDialog [14] = "";
+		DDialog [15] = "You sing the dragon a lullaby to the best of your ability.";
+		DDialog [16] = "It seems good enough for the creature, and so you say farewell.";
+		DDialog [17] = "";
+		DDialog [18] = "You thank the dragon, but you think you should return to thh king";
+		DDialog [19] = "as soon as possible no that your quest is complete.";
 	}
 	
 	// Update is called once per frame
@@ -174,7 +209,7 @@ public class DialogueDisplay : MonoBehaviour {
 	}
 
 	void loadarrays() {
-				KDialog = new string[7];
+		KDialog = new string[7];
 		KDialog [0] = "There have been reports of a disturbance in";
 		KDialog [1] = "in the village outside the grazing plains.";
 		KDialog [2] = "I need you to go investigate.";

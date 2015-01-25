@@ -19,18 +19,18 @@ public class ElderTalkPrompt : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (col.transform.tag == "Player" && !col.isTrigger && (first||!once) && Input.GetKey(KeyCode.Space)) {
+		//if (col.transform.tag == "Player" && !col.isTrigger && (first||!once) && Input.GetKey(KeyCode.Space)) {
 			if (DecisionTree.IsCurrentState ("start") && once && first) {
 				disp.displaytext (2);
 				once = false;
 			} else if (DecisionTree.IsCurrentState ("start") && !once && first) {
 				disp.displaytext (3);
 				first = false;
-			} else if (!first && !once) {
+			} else if (DecisionTree.IsCurrentState("start") && !first && !once) {
 				disp.displaytext (4);
 				once = true;
 			}
-		}
+		//}
 		once = false;
 	}
 }
