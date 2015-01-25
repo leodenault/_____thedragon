@@ -60,7 +60,7 @@ public class DialogueDisplay : MonoBehaviour {
 		DDialog [15] = "You sing the dragon a lullaby to the best of your ability.";
 		DDialog [16] = "It seems good enough for the creature, and so you say farewell.";
 		DDialog [17] = "";
-		DDialog [18] = "You thank the dragon, but you think you should return to thh king";
+		DDialog [18] = "You thank the dragon, but you think you should return to the king";
 		DDialog [19] = "as soon as possible no that your quest is complete.";
 	}
 	
@@ -123,8 +123,34 @@ public class DialogueDisplay : MonoBehaviour {
 			//ED.load ();
 			return EDialog [4];
 		}
-		return "This is 20 char now. Let's see what happens when we add more characters. We'll see when we see. what happens when " +  
-				"like i give the string a ridiculous amput of text, like way more thast we wou;d eeeeeeeeeever need, but its good to test this shot ya know?"; //placeholder
+		if (dialogueNumber == 5) {
+			return DDialog [0] + "\n" + DDialog [1];
+		}
+		if (dialogueNumber == 6) {
+			return DDialog [2] + "\n" + DDialog [3];
+		}
+		if (dialogueNumber == 7) {
+			return DDialog[5]+"\n"+DDialog[6];
+		}
+		if (dialogueNumber == 8) {
+			return DDialog[7];
+		}
+		if (dialogueNumber == 9) {
+			return DDialog [9];
+		}
+		if (dialogueNumber == 10) {
+			return DDialog[10]+"\n"+DDialog[11];
+		}
+		if (dialogueNumber == 11) {
+			return DDialog[12]+"\n"+DDialog[13];
+		}
+		if (dialogueNumber == 12) {
+			return DDialog[15]+"\n"+DDialog[16];
+		}
+		if (dialogueNumber == 13) {
+			return DDialog[18]+"\n"+DDialog[19];
+		}
+		return ""; //placeholder
 	}
 
 	int getNumChars (int stringMarker) {
@@ -208,7 +234,7 @@ public class DialogueDisplay : MonoBehaviour {
 
 	}
 
-	void loadarrays() {
+	/*void loadarrays() {
 		KDialog = new string[7];
 		KDialog [0] = "There have been reports of a disturbance in";
 		KDialog [1] = "in the village outside the grazing plains.";
@@ -244,5 +270,5 @@ public class DialogueDisplay : MonoBehaviour {
 		DDialog [17] = "";
 		DDialog [18] = "You thank the dragon, but you think you should return to thh king";
 		DDialog [19] = "as soon as possible no that your quest is complete.";
-	}
+	}*/
 }

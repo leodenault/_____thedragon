@@ -23,12 +23,32 @@ public class DragonFight : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		if (!once && first && Input.GetKey (KeyCode.Space)) {
-			disp.displaytext (6);
-			first = false;
-		} else if (!once && !first && Input.GetKey (KeyCode.Space) && !done) {
-			disp.displaytext (7);
-			done = true;
+		if (DecisionTree.IsCurrentState ("talk")) {
+			if (!once && first && Input.GetKey (KeyCode.Space)) {
+				disp.displaytext (6);
+				first = false;
+			} /*else if (!once && !first && Input.GetKey (KeyCode.Space) && !done) {
+				disp.displaytext (7);
+				done = true;
+			}*/
+		} else if (DecisionTree.IsCurrentState ("moreTalk")) {
+			if (once && Input.GetKey (KeyCode.Space)) {
+				disp.displaytext (7);
+				once = true;
+			} else if (!once && first && Input.GetKey(KeyCode.Space)) {
+				disp.displaytext (8);
+				first = true;
+			}
+		} else if (DecisionTree.IsCurrentState ("Lullaby")) {
+			if (once && first && Input.GetKey(KeyCode.Space)) {
+				disp.displaytext (9);
+				once = false;
+			} else if (!once && first && Input.GetKey(KeyCode.Space)) {
+				disp.displaytext (10);
+				first = false;
+			} else if (!once && !first && Input.GetKey(KeyCode.Space)) {
+				disp.displaytext (11);
+			}
 		}
 	}
 }
