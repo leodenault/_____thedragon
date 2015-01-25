@@ -3,3 +3,6 @@ Library
 *.csproj
 *.sln
 *.userprefs
+*/Assets/other.meta
+*/TestScenes.meta
+*/src.meta
