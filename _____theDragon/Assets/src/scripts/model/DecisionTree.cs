@@ -76,7 +76,9 @@ public static class DecisionTree {
 	}
 	
 	public static void registerListener(Listener listener) {
-		listeners.Add(listener);
+		if (!listeners.Contains(listener)) {
+			listeners.Add(listener);
+		}
 	}
 	
 	public static List<string> GetChoices() {

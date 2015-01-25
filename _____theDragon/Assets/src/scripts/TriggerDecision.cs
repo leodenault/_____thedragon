@@ -9,8 +9,7 @@ public class TriggerDecision : MonoBehaviour, DecisionTree.Listener {
 	void Start ()
 	{
 		DecisionTree.registerListener(this);
-		string[] options = {"NOPE", "LOL"};
-		choicePanel.GenerateOptions(options);
+		choicePanel.GenerateOptions(DecisionTree.GetChoices().ToArray());
 		choicePanel.Display(true);
 	}
 	
