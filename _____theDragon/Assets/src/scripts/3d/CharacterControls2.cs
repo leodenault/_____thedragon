@@ -154,14 +154,14 @@ public class CharacterControls2 : MonoBehaviour {
 		//Debug.Log(min);
 	}
 
-	void OnTriggerStay2D(Collider2D  col)
+	void OnTriggerStay(Collider  col)
 	{
 
 		
 		if(col.tag == "Interactable" && !disp.displaying)
 		{
 			
-			if(Input.GetKeyDown("e"))
+			if(Input.GetKeyDown("e") || Input.GetKeyDown(KeyCode.Space))
 			{
 				
 				col.transform.SendMessage("Interaction");
