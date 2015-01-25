@@ -20,21 +20,23 @@ public class ChoicePanel : MonoBehaviour {
 	}
 	
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.UpArrow) ||
-			Input.GetKeyDown(KeyCode.W)) {
-			int nextIndex;
-			if (index == 0) {
-				nextIndex = options.Count - 1;
-			} else {
-				nextIndex = index - 1;
+		if (displaying) {
+			if (Input.GetKeyDown(KeyCode.UpArrow) ||
+				Input.GetKeyDown(KeyCode.W)) {
+				int nextIndex;
+				if (index == 0) {
+					nextIndex = options.Count - 1;
+				} else {
+					nextIndex = index - 1;
+				}
+				setIndex(nextIndex, index);
+			} else if (Input.GetKeyDown(KeyCode.DownArrow) ||
+				Input.GetKeyDown(KeyCode.S)) {
+				setIndex((index + 1) % options.Count, index);
+			} else if (Input.GetKeyDown(KeyCode.E) ||
+				Input.GetKeyDown(KeyCode.Space)) {
+				DecisionTree.SelectChoice(options[index].text);
 			}
-			setIndex(nextIndex, index);
-		} else if (Input.GetKeyDown(KeyCode.DownArrow) ||
-			Input.GetKeyDown(KeyCode.S)) {
-			setIndex((index + 1) % options.Count, index);
-		} else if (Input.GetKeyDown(KeyCode.E) ||
-			Input.GetKeyDown(KeyCode.Space)) {
-			DecisionTree.SelectChoice(options[index].text);
 		}
 	}
 	
