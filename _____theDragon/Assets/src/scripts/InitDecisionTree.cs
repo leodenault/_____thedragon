@@ -12,7 +12,6 @@ public class InitDecisionTree : MonoBehaviour {
 	{
 		DecisionTree.Init();
 		DecisionTree.registerListener(listener);
-		//disp.loadArrays();
 		if (DecisionTree.IsCurrentState ("start")) {
 			disp.displaytext (0);
 			once = false;
