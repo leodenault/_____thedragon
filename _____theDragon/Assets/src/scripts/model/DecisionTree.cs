@@ -17,6 +17,8 @@ public static class DecisionTree {
 	private static IDecisionTreeState turnintoDragon;
 	private static IDecisionTreeState killDragonreturnHome;
 	
+	private static IDecisionTreeState end;
+	
 	private static IDecisionTreeState current;
 
 	private static bool init = false;
@@ -57,6 +59,8 @@ public static class DecisionTree {
 		dragonSings = new DecisionTreeState("dragon Sings", s6);
 		turnintoDragon = new DecisionTreeState ("turn into dragon",s7);
 		killDragonreturnHome = new DecisionTreeState ("Kill dragon and return home",s8);
+		
+		end = new DecisionTreeState("end", "");
 
 		current = start;
 	}
@@ -80,7 +84,6 @@ public static class DecisionTree {
 		createChoice (talkandsingToDragon, "Dragon wants to sing", dragonSings);
 		createChoice (dragonSings, "You become dragon", turnintoDragon);
 		createChoice (talkandsingToDragon, "Kill the dragon and return Home", killDragonreturnHome);
-
 	}
 	
 	private static void notifyListeners(string currentId) {
@@ -117,5 +120,10 @@ public static class DecisionTree {
 	
 	public static string GetEpilogue() {
 		return epilogData.print_epilog();
+	}
+	
+	public static void GoToEnd() {
+		choiceTracker.AddState(current);
+		current = end;
 	}
 }
