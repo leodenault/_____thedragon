@@ -45,6 +45,7 @@ public class DialogueDisplay : MonoBehaviour {
 			else
 			{
 				scrolling = false;
+				TextDisp.transform.parent.Find("Image").active = true;
 			}
 		}
 		if(displaying && !scrolling)
@@ -53,6 +54,7 @@ public class DialogueDisplay : MonoBehaviour {
 			{
 				displaying = false;
 				spot = 0;
+				TextDisp.transform.parent.Find("Image").active = false;
 				TextDisp.transform.parent.active = false;
 			}
 		}
