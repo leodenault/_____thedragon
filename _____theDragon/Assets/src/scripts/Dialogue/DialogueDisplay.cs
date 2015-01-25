@@ -26,12 +26,14 @@ public class DialogueDisplay : MonoBehaviour {
 		scrolling = false;
 		displayedChars = 0;
 		dialogue = "";
-		KDialog = new string[5];
-		KDialog [0] = "There have been reports of a disturbance in the village";
-		KDialog [1] = "outside the grazing plains. Go Investigate.";
-		KDialog [2] = "";
-		KDialog [3] = "You make your way back to the king, who rewards you richly";
-		KDialog [4] = "for restoring balance to his kingdom.";
+		KDialog = new string[7];
+		KDialog [0] = "There have been reports of a disturbance in";
+		KDialog [1] = "in the village outside the grazing plains.";
+		KDialog [2] = "I need you to go investigate.";
+		KDialog [3] = "Do not fail me.";
+		KDialog [4] = "";
+		KDialog [5] = "You make your way back to the king, who rewards you richly";
+		KDialog [6] = "for restoring balance to his kingdom.";
 		EDialog = new string[5];
 		EDialog [0] = "There is a ...... dragon ......";
 		EDialog [1] = "in the ...... please help us ......";
@@ -80,19 +82,21 @@ public class DialogueDisplay : MonoBehaviour {
 			//KD.load ();
 			return KDialog[0]+"\n"+KDialog[1];
 		}
-
-		if(dialogueNumber == 1)
+		if (dialogueNumber == 1) {
+			return KDialog [2] + "\n" + KDialog [3];
+		}
+		if(dialogueNumber == 2)
 		{
 			//ElderDialogue ED;
 			//ED.load ();
 			return EDialog[0]+"\n"+EDialog[1];
 		}
-		if (dialogueNumber == 2) {
+		if (dialogueNumber == 3) {
 			//ElderDialogue ED;
 			//ED.load ();
 			return EDialog [2] + "\n" + EDialog [3];
 		}
-		if (dialogueNumber == 3) {
+		if (dialogueNumber == 4) {
 			//ElderDialogue ED;
 			//ED.load ();
 			return EDialog [4];
