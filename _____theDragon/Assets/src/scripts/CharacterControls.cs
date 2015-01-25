@@ -99,10 +99,10 @@ public class CharacterControls : MonoBehaviour {
 	{
 
 		
-		if(col.tag == "Interactable")
+		if(col.tag == "Interactable" && !disp.displaying)
 		{
 			
-			if(Input.GetAxis("Interact") != 0)
+			if(Input.GetKeyDown("e"))
 			{
 				
 				col.transform.SendMessage("Interaction");

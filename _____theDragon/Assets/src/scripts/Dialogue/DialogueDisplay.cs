@@ -40,7 +40,7 @@ public class DialogueDisplay : MonoBehaviour {
 			if(spot < dialogue.Length)
 			{
 				TextDisp.text = dialogue.Substring(0,(int)spot);
-				spot+= .3f;
+				spot+= .5f;
 			}
 			else
 			{
@@ -52,6 +52,7 @@ public class DialogueDisplay : MonoBehaviour {
 			if(Input.GetAxis("Interact") != 0)
 			{
 				displaying = false;
+				spot = 0;
 				TextDisp.transform.parent.active = false;
 			}
 		}
@@ -66,7 +67,7 @@ public class DialogueDisplay : MonoBehaviour {
 
 		if(dialogueNumber == 1)
 		{
-		return "There is a ... dragon ... int the ... please help us ... you must ... the dragon ...";	
+		return "There is a ... dragon ... in the ... please help us ... you must ... the dragon ...";	
 		}
 		else
 		return "This is 20 char now. Let's see what happens when we add more characters. We'll see when we see. what happens when " +  
@@ -103,6 +104,7 @@ public class DialogueDisplay : MonoBehaviour {
 		scrolling = true;
 		displaying = true;
 		dialogue = getDialogue (num);
+			TextDisp.text = dialogue;
 		//TextDisp.text = "out of getDialogue";
 		//int lineNum = 0; //how many lines of text are currently displayed
 		//int charNum = 0; //how many characters are currently displayed
@@ -117,7 +119,7 @@ public class DialogueDisplay : MonoBehaviour {
 			}*/
 		//}
 		TextDisp.transform.parent.active = true;
-		TextDisp.text = dialogue;
+	
 	}
 
 	IEnumerator keyPress (bool pressed) {
@@ -145,13 +147,6 @@ public class DialogueDisplay : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D col) {
 		if (col.transform.tag == "Player" && !col.isTrigger) {
-			//TextDisp.text = "Start!";
-			//dialogue = getDialogue(0);
-			//TextDisp.text = dialogue;
-			//int i = getNumChars (0);
-			//TextDisp.text = i.ToString();
-			//TextDisp.text = dialogue.Substring(0, i) + "\n" + dialogue.Substring (i);
-			//displayFragment (0);
 			displaytext(0);
 		}
 	}
