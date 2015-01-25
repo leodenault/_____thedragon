@@ -28,35 +28,19 @@ public class Door : MonoBehaviour {
 	{
 		if(transistioning)
 		{
-			player.GetComponent<BoxCollider2D>().enabled = false;
-			if(tTime <= 0)
-			{
+			player.GetComponent<BoxCollider>().enabled = false;
+			
 				player.localScale = new Vector3(1,1,1);
 				Application.LoadLevel(SceneName);
 				transistioning = false;
-				player.GetComponent<CharacterControls>().transistioning = false;
-				player.GetComponent<BoxCollider2D>().enabled = true;
-			}
-			else
-			{
-				if(tZ != 0)
-				{
-				player.transform.localScale-=new Vector3(rate * tZ,rate * tZ,0);
-				player.transform.position+=new Vector3(0,0.02f * tY,0);
-				}
-				else
-				{
-					
-						player.transform.position+=new Vector3(moveR * tX,moveR * tY,0);
-					
-				}
-			tTime--;
-			}
+				//player.GetComponent<CharacterControls>().transistioning = false;
+				player.GetComponent<BoxCollider>().enabled = true;
+			
 		}
 
 	}
 	
-	void OnTriggerEnter2D(Collider2D  col)
+	void OnTriggerEnter(Collider  col)
 	{
 		if(col.transform.tag == "Player" && !col.isTrigger)
 		{
@@ -65,7 +49,7 @@ public class Door : MonoBehaviour {
 			player = col.transform;
 			transistioning = true;
 			tTime = transTime;
-			player.GetComponent<CharacterControls>().transistioning = true;
+			//player.GetComponent<CharacterControls>().transistioning = true;
 		}
 	}
 

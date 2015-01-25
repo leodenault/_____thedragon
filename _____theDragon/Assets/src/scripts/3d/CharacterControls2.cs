@@ -54,8 +54,8 @@ public class CharacterControls2 : MonoBehaviour {
 			{
 				if(dor.thisDoorNum == ApplicationModel.door)
 				{				
-					transform.position = new Vector3(d.transform.GetChild(0).position.x, d.transform.GetChild(0).position.y, transform.position.z);
-					break;
+					transform.position = d.transform.GetChild(0).position;
+										break;
 				}
 			}
 		
