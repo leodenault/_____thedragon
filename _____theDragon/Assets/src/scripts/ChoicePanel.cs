@@ -13,6 +13,13 @@ public class ChoicePanel : MonoBehaviour {
 	public Text optionText;
 	public List<Text> options;
 	
+	private bool displaying;
+	public bool Displaying {
+		get {
+			return displaying;
+		}
+	}
+	
 	void Update() {
 		if (Input.GetKeyDown(KeyCode.UpArrow) ||
 			Input.GetKeyDown(KeyCode.W)) {
@@ -26,7 +33,8 @@ public class ChoicePanel : MonoBehaviour {
 		} else if (Input.GetKeyDown(KeyCode.DownArrow) ||
 			Input.GetKeyDown(KeyCode.S)) {
 			setIndex((index + 1) % options.Count, index);
-		} else if (Input.GetKeyDown(KeyCode.Return)) {
+		} else if (Input.GetKeyDown(KeyCode.E) ||
+			Input.GetKeyDown(KeyCode.Space)) {
 			DecisionTree.SelectChoice(options[index].text);
 		}
 	}
@@ -37,7 +45,17 @@ public class ChoicePanel : MonoBehaviour {
 		options[index].color= new Color(0.0F, 1.0F, 0.0F, 1.0F);
 	}
 	
+	private void clearChildren() {
+	    List<GameObject> children = new List<GameObject>();
+		foreach (Transform child in choicePanel.transform) {
+			children.Add(child.gameObject);
+		}
+		children.ForEach(child => Destroy(child));
+	}
+	
 	public void GenerateOptions(string[] textOptions) {
+		clearChildren();
+		
 		if (index == NONE) {
 			options = new List<Text>();
 			foreach (string textOption in textOptions) {
@@ -53,5 +71,10 @@ public class ChoicePanel : MonoBehaviour {
 	
 	public string GetSelectedOption() {
 		return options[index].text;
+	}
+	
+	public void Display(bool display) {
+		transform.active = display;
+		displaying = display;
 	}
 }

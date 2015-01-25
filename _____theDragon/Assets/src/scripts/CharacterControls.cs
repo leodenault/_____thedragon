@@ -10,6 +10,7 @@ public class CharacterControls : MonoBehaviour {
 	public bool transistioning;
 	public float speed;
 	public DialogueDisplay disp;
+	public ChoicePanel choicePanel;
 	public Sprite up,down,left,right;
 	Vector2 pMoveDir;
 	bool grabCamX,grabCamY;
@@ -64,7 +65,7 @@ public class CharacterControls : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical"), 0); 
-		if(!transistioning  && !disp.displaying)
+		if(!transistioning  && !disp.displaying && !choicePanel.Displaying)
 		{
 			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
 			{
@@ -156,7 +157,7 @@ public class CharacterControls : MonoBehaviour {
 	{
 
 		
-		if(col.tag == "Interactable" && !disp.displaying)
+		if(col.tag == "Interactable" && !disp.displaying && !choicePanel.Displaying)
 		{
 			
 			if(Input.GetKeyDown("e"))

@@ -1,16 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerDecision : MonoBehaviour {
+public class TriggerDecision : MonoBehaviour, DecisionTree.Listener {
+
+	public ChoicePanel choicePanel;
+	public Canvas canvas;
 
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
-	//Debug.Log(DecisionTree.GetChoices()[0]);
+		DecisionTree.registerListener(this);
+		string[] options = {"NOPE", "LOL"};
+		choicePanel.GenerateOptions(options);
+		choicePanel.Display(true);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
+	public void Notify(string currentId) {
+		Debug.Log(choicePanel);
+		choicePanel.Display(false);
+		Debug.Log("LOL");
 	}
 }
