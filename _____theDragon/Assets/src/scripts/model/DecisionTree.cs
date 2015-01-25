@@ -15,6 +15,7 @@ public static class DecisionTree {
 	private static IDecisionTreeState talkandsingToDragon;
 	private static IDecisionTreeState dragonSings;
 	private static IDecisionTreeState turnintoDragon;
+	private static IDecisionTreeState killDragonreturnHome;
 	
 	private static IDecisionTreeState current;
 
@@ -23,6 +24,15 @@ public static class DecisionTree {
 	private static ChoiceTracker choiceTracker;
 	private static EpilogData epilogData;
 	private static List<Listener> listeners;
+
+	private string s1 = "";
+	private string s2 = "You made the brave decision to fight the dragon";
+	private string s3 = "Though you were brave, your action angered the dragon and he kills you";
+	private string s4 = "You manages to keep calm infront of";
+	private string s5;
+	private string s6;
+	private string s7;
+
 	
 	public static void Init() {
 		if (!init) {
@@ -38,13 +48,13 @@ public static class DecisionTree {
 	}
 	
 	private static void initStates() {
-		start = new DecisionTreeState("start", "");
-		killDragon = new DecisionTreeState("kill dragon", "");
-		dragonKills = new DecisionTreeState("dragon kills", "");
-		talkToDragon = new DecisionTreeState("talk to dragon", "");
-		talkandsingToDragon = new DecisionTreeState("talk and sing to dragon", "");
-		dragonSings = new DecisionTreeState("dragon Sings", "");
-		turnintoDragon = new DecisionTreeState ("turn into dragon","");
+		start = new DecisionTreeState("start", s1);
+		killDragon = new DecisionTreeState("kill dragon", s2);
+		dragonKills = new DecisionTreeState("dragon kills", s3);
+		talkToDragon = new DecisionTreeState("talk to dragon", s4);
+		talkandsingToDragon = new DecisionTreeState("talk and sing to dragon", s5);
+		dragonSings = new DecisionTreeState("dragon Sings", s6);
+		turnintoDragon = new DecisionTreeState ("turn into dragon",s7);
 		
 		current = start;
 	}
@@ -62,10 +72,11 @@ public static class DecisionTree {
 	private static void setupChoices() {
 		createChoice(start, "Kill the dragon!", killDragon);
 		createChoice(start, "Talk to the dragon", talkToDragon);
+		createChoice (killDragon, "Dragon Kills you!", dragonKills);
 		createChoice (talkToDragon, "Sing to the dragon", talkandsingToDragon);
-		createChoice(talkToDragon, "Kill the dragon!", killDragon);
+		createChoice(talkToDragon, "Kill the dragon and return Home", killDragonreturnHome);
 		createChoice (talkandsingToDragon, "Dragon wants to sing", turnintoDragon);
-		createChoice (talkandsingToDragon, "Kill the dragon!", killDragon);
+		createChoice (talkandsingToDragon, "Kill the dragon and return Home", killDragonreturnHome);
 
 	}
 	
