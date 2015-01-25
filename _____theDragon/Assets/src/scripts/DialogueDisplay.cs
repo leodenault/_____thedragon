@@ -9,16 +9,19 @@ public class DialogueDisplay : MonoBehaviour {
 	public string dialogue;
 	public int textWidth = 40;
 	public Text TextDisp;
-	int spot;
+	float spot;
+	public bool displaying;
 	bool scrolling;
+
 	// Use this for initialization
 	void Start () {
+		displaying = false;
 		spot = 0;
 		scrolling = false;
 		displayedChars = 0;
 		dialogue = "";
-		TextDisp.text = dialogue;
-		displaytext();
+	//	TextDisp.text = dialogue;
+	//	displaytext();
 		//put character into dialogue state
 		//check if the dialogue has options?
 		//determine which text to display
@@ -36,18 +39,36 @@ public class DialogueDisplay : MonoBehaviour {
 		{
 			if(spot < dialogue.Length)
 			{
-				TextDisp.text = dialogue.Substring(0,spot);
-				spot++;
+				TextDisp.text = dialogue.Substring(0,(int)spot);
+				spot+= .3f;
 			}
 			else
 			{
 				scrolling = false;
 			}
 		}
+		if(displaying && !scrolling)
+		{
+			if(Input.GetAxis("Interact") != 0)
+			{
+				displaying = false;
+				TextDisp.transform.parent.active = false;
+			}
+		}
 	}
 
 	string getDialogue(int dialogueNumber) {
 		//get the correct text from another function
+		if(dialogueNumber == 0)
+		{
+		return "There have been reports of a great disturbance in the village outside the graving plains. Go Investigate.";	
+		}
+
+		if(dialogueNumber == 1)
+		{
+		return "There is a ... dragon ... int the ... please help us ... you must ... the dragon ...";	
+		}
+		else
 		return "This is 20 char now. Let's see what happens when we add more characters. We'll see when we see. what happens when " +  
 				"like i give the string a ridiculous amput of text, like way more thast we wou;d eeeeeeeeeever need, but its good to test this shot ya know?"; //placeholder
 	}
@@ -74,13 +95,14 @@ public class DialogueDisplay : MonoBehaviour {
 		return charNum;
 	}
 	
-	public void displaytext () {
+	public void displaytext (int num) {
 
 		bool done = false;
 		bool pressed = false;
 		int dialogueMarker = 0; //where you are in the string
 		scrolling = true;
-		dialogue = getDialogue (dialogueNumber);
+		displaying = true;
+		dialogue = getDialogue (num);
 		//TextDisp.text = "out of getDialogue";
 		//int lineNum = 0; //how many lines of text are currently displayed
 		//int charNum = 0; //how many characters are currently displayed
@@ -130,7 +152,7 @@ public class DialogueDisplay : MonoBehaviour {
 			//TextDisp.text = i.ToString();
 			//TextDisp.text = dialogue.Substring(0, i) + "\n" + dialogue.Substring (i);
 			//displayFragment (0);
-			displaytext();
+			displaytext(0);
 		}
 	}
 
