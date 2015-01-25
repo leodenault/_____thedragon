@@ -7,17 +7,15 @@ public class InitDecisionTree : MonoBehaviour {
 	public DialogueDisplay disp;
 	bool once = true;
 	bool first = true;
+	DecisionTree.Listener listener;
 	void Start () 
 	{
-		
-		DecisionTree.Init();
+		DecisionTree.registerListener(listener);
 		//disp.loadArrays();
-		if (DecisionTree.IsCurrentState ("start"))
+		if (DecisionTree.IsCurrentState ("start")) {
 			disp.displaytext (0);
-
-		//disp.displaytext(1);
-		once = false;
-		
+			once = false;
+		}
 	}
 	
 	// Update is called once per frame
@@ -26,7 +24,7 @@ public class InitDecisionTree : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if (first == true && Input.GetKey (KeyCode.Space)) {
+		if (first && Input.GetKey (KeyCode.Space)) {
 						disp.displaytext (1);
 						first = false;
 				}

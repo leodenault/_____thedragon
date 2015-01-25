@@ -2,15 +2,17 @@
 using System.Collections;
 
 public class DragonTalk: MonoBehaviour {
-
+	
 	public DialogueDisplay disp;
 	bool once = true;
 	bool first = true;
 	bool done = false;
+	DecisionTree.Listener listener;
 
 	// Use this for initialization
 	void Start () {
-		DecisionTree.Init ();
+		//DecisionTree.Init ();
+		DecisionTree.registerListener (listener);
 		/*if (DecisionTree.IsCurrentState ("talk")) {
 			disp.displaytext (5);
 			once = false;

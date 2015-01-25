@@ -9,10 +9,11 @@ public class ElderTalkPrompt : MonoBehaviour {
 	bool start = false;
 	bool trigger = false;
 	public GameObject character;
+	DecisionTree.Listener listener;
 
 	// Use this for initialization
 	void Start () {
-		DecisionTree.Init ();
+		DecisionTree.registerListener (listener);
 	}
 	
 	// Update is called once per frame
