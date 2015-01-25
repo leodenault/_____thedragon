@@ -9,7 +9,9 @@ public static class DecisionTree {
 	private static IDictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>> stateChoiceToState;
 
 	private static IDecisionTreeState start;
-	private static IDecisionTreeState dragon;
+	private static IDecisionTreeState killDragon;
+	private static IDecisionTreeState dragonKills;
+	private static IDecisionTreeState talkToDragon;
 	
 	private static IDecisionTreeState current;
 
@@ -34,7 +36,9 @@ public static class DecisionTree {
 	
 	private static void initStates() {
 		start = new DecisionTreeState("start", "");
-		dragon = new DecisionTreeState("dragon", "");
+		killDragon = new DecisionTreeState("kill dragon", "");
+		dragonKills = new DecisionTreeState("dragon kills", "");
+		talkToDragon = new DecisionTreeState("talk to dragon", "");
 		
 		current = start;
 	}
@@ -50,8 +54,8 @@ public static class DecisionTree {
 	
 	// Here's where the magic happens
 	private static void setupChoices() {
-		createChoice(start, "LOL", dragon);
-		createChoice(start, "NOPE", start);
+		createChoice(start, "Kill the dragon!", killDragon);
+		createChoice(start, "Talk to the dragon", talkToDragon);
 	}
 	
 	private static void notifyListeners(string currentId) {
