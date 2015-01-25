@@ -3,23 +3,19 @@ using UnityEngine;
 
 public class EpilogData
 {
-	private IDecisionTreeState [] s1;
-	public EpilogData (IChoiceTracker s)
+	private IChoiceTracker tracker;
+	public EpilogData (IChoiceTracker tracker)
 	{
-		s1 = s.GetStates ();
+		this.tracker = tracker;
 	}
 	public string print_epilog()
 	{
-		int i = 0;
-		string s = "Wowww. You have been through the following worlds in your journey..!!!\n\n";
-		int n = s1.Length;
-		while(i < n)
+		string s = "Wowww. You have been through the following worlds in your journey..!!!";
+		foreach (IDecisionTreeState state in tracker.GetStates())
 		{ 
-			s = s + s1[i].GetStateEpilogue();
-			s = "\n\n";
-			i++;
+			s += "\n\n";
+			s += state.GetStateEpilogue();
 		}
-		Debug.Log (s);
 		return s;
 	}
 }
