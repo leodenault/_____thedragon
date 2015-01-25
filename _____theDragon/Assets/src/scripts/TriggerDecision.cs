@@ -14,7 +14,6 @@ public class TriggerDecision : DecisionTree.Listener {
 		
 		DecisionTree.registerListener(this);
 		test = DecisionTree.GetChoices().ToArray();
-		Debug.Log(test.Length);
 		choicePanel.GenerateOptions(test);
 		choicePanel.Display(true);
 

@@ -57,7 +57,7 @@ public static class DecisionTree {
 		talkToDragon = new DecisionTreeState("talk to dragon", s4);
 		talkandsingToDragon = new DecisionTreeState("talk and sing to dragon", s5);
 		dragonSings = new DecisionTreeState("dragon Sings", s6);
-		turnintoDragon = new DecisionTreeState ("turn into dragon",s7);
+		turnintoDragon = new DecisionTreeState ("return home",s7);
 		killDragonreturnHome = new DecisionTreeState ("Kill dragon and return home",s8);
 		
 		end = new DecisionTreeState("end", "");

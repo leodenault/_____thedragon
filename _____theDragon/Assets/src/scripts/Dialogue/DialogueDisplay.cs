@@ -152,7 +152,7 @@ public class DialogueDisplay : MonoBehaviour {
 		}
 
 		if (dialogueNumber == 14) {
-			return KDialog[5]+"\n"+DDialog[6];
+			return KDialog[5]+"\n"+KDialog[6];
 		}
 		return ""; //placeholder
 	}
