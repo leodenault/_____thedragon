@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DragonFight : MonoBehaviour {
+public class DragonTalk: MonoBehaviour {
 
 	public DialogueDisplay disp;
 	bool once = true;
@@ -13,7 +13,7 @@ public class DragonFight : MonoBehaviour {
 		DecisionTree.Init ();
 		if (DecisionTree.IsCurrentState ("talk")) {
 			disp.displaytext (5);
-			bool once = false;
+			once = false;
 		}
 	}
 	
@@ -38,6 +38,7 @@ public class DragonFight : MonoBehaviour {
 			} else if (!once && first && Input.GetKey(KeyCode.Space)) {
 				disp.displaytext (8);
 				first = true;
+				done = true;
 			}
 		} else if (DecisionTree.IsCurrentState ("Lullaby")) {
 			if (once && first && Input.GetKey(KeyCode.Space)) {
@@ -48,7 +49,13 @@ public class DragonFight : MonoBehaviour {
 				first = false;
 			} else if (!once && !first && Input.GetKey(KeyCode.Space)) {
 				disp.displaytext (11);
+				done = true;
 			}
+		}
+		if (done) {
+			once = true;
+			first = true;
+			done = false;
 		}
 	}
 }
