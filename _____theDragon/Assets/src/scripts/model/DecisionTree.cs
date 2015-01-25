@@ -77,7 +77,8 @@ public static class DecisionTree {
 		createChoice (killDragon, "Dragon Kills you!", dragonKills);
 		createChoice (talkToDragon, "Sing to the dragon", talkandsingToDragon);
 		createChoice(talkToDragon, "Kill the dragon and return Home", killDragonreturnHome);
-		createChoice (talkandsingToDragon, "Dragon wants to sing", turnintoDragon);
+		createChoice (talkandsingToDragon, "Dragon wants to sing", dragonSings);
+		createChoice (dragonSings, "You become dragon", turnintoDragon);
 		createChoice (talkandsingToDragon, "Kill the dragon and return Home", killDragonreturnHome);
 
 	}
