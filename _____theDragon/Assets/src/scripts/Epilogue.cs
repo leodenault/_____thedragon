@@ -9,7 +9,7 @@ public class Epilogue : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		canvas.renderer.material.color = new Color(0.0F, 0.0F, 0.0F, 1.0F);
+		//canvas.renderer.material.color = new Color(0.0F, 0.0F, 0.0F, 1.0F);
 		text.text = DecisionTree.GetEpilogue();
 	}
 	

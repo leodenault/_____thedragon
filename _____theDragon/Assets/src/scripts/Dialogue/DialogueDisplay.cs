@@ -53,7 +53,7 @@ public class DialogueDisplay : MonoBehaviour {
 		DDialog [8] = "";
 		DDialog [9] = "The dragon song settles deep inside your belly,";
 		DDialog [10] = "and you begin to notice strange and wonderful things";
-		DDialog [11] = "changing within you. You close your eyes, and when you open them";
+		DDialog [11] = "changing within you.You close your eyes, and when you open them";
 		DDialog [12] = "You have become a dragon. You open your eyes to a new world,";
 		DDialog [13] = "a new life, and a new level of greatness for you to achieve.";
 		DDialog [14] = "";

@@ -50,7 +50,11 @@ public class DragonInitiator : MonoBehaviour {
 			decision.Trigger();
 			once2 = false;
 		}
-		
+		if(DecisionTree.IsCurrentState("kill dragon"))
+		{
+			DecisionTree.GoToEnd();
+			Application.LoadLevel("Epilogue");
+		}
 		if( DecisionTree.IsCurrentState("Kill dragon and return home"))
 		Application.LoadLevel("Throne_Room");
 		if(DecisionTree.IsCurrentState("talk and sing to dragon") && once3)
@@ -96,7 +100,11 @@ public class DragonInitiator : MonoBehaviour {
 			disp.displaytext(11);
 			once9 =  false;	
 		}
-
+		if(!once9 && !disp.displaying)
+		{
+			DecisionTree.GoToEnd();
+			Application.LoadLevel("Epilogue");
+		}
 		Debug.Log(DecisionTree.getCurrentState());
 
 	}
