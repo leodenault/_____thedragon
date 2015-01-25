@@ -25,13 +25,14 @@ public static class DecisionTree {
 	private static EpilogData epilogData;
 	private static List<Listener> listeners;
 
-	private string s1 = "";
+	private string s1 = "King asks you to face dragon and resolve the conflict";
 	private string s2 = "You made the brave decision to fight the dragon";
 	private string s3 = "Though you were brave, your action angered the dragon and he kills you";
-	private string s4 = "You manages to keep calm infront of";
-	private string s5;
-	private string s6;
-	private string s7;
+	private string s4 = "You manage to keep calm infront of dragon and start talking to him";
+	private string s5 = "Dragon asks you to sing for him and you accept it";
+	private string s6 = "Dragon is impressed by your attitude and sings for you in return";
+	private string s7 = "You have a very good conversation with dragon and he makes you a dragon";
+	private string s8 = "You do not trust dragon and kills him earning a handsome reward from the king";
 
 	
 	public static void Init() {
@@ -55,7 +56,8 @@ public static class DecisionTree {
 		talkandsingToDragon = new DecisionTreeState("talk and sing to dragon", s5);
 		dragonSings = new DecisionTreeState("dragon Sings", s6);
 		turnintoDragon = new DecisionTreeState ("turn into dragon",s7);
-		
+		killDragonreturnHome = new DecisionTreeState ("Kill dragon and return home",s8);
+
 		current = start;
 	}
 	
