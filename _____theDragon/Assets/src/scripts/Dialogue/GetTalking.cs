@@ -14,7 +14,7 @@ public class GetTalking : MonoBehaviour {
 	}
 }
 
-public struct Index {
+/*public struct Index {
 	int startIndex;
 	int numStrings;
 }	
@@ -56,4 +56,4 @@ public class SpeechDatabase {
 		return fullString;
 	}
 
-}
+}*/
