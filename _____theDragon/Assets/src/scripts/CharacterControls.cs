@@ -12,7 +12,7 @@ public class CharacterControls : MonoBehaviour {
 	public DialogueDisplay disp;
 	bool grabCamX,grabCamY;
 	Vector3 pos;
-	float buffer = 1f;
+	float buffer = 0.5f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
