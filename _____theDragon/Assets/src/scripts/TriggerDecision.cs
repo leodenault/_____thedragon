@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TriggerDecision : MonoBehaviour, DecisionTree.Listener {
+public class TriggerDecision : DecisionTree.Listener {
 
-	public ChoicePanel choicePanel;
+	ChoicePanel choicePanel;
 
-	// Use this for initialization
-	void Start ()
+	public TriggerDecision(ChoicePanel choicePanel) {
+		this.choicePanel = choicePanel;
+	}
+
+	public void Trigger()
 	{
 		DecisionTree.registerListener(this);
 <<<<<<< HEAD
