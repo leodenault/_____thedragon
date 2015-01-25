@@ -1,0 +1,16 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is behind 'origin/master' by 3 commits, and can be fast-forwarded.
+#   (use "git pull" to update your local branch)
+#
+# Changes to be committed:
+#	renamed:    _____theDragon/Assets/imported stuff.meta -> _____theDragon/Assets/other/tempProj.meta
+#	new file:   _____theDragon/Assets/press.meta
+#	new file:   _____theDragon/Assets/release.meta
+#	new file:   _____theDragon/Assets/src/Materials/transparent-arrow-left-hi.mat
+#	new file:   _____theDragon/Assets/src/Materials/transparent-arrow-left-hi.mat.meta
+#	modified:   _____theDragon/Assets/src/scripts/TriggerDecision.cs
+#
+
