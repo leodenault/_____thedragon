@@ -4,7 +4,6 @@ using System.Collections;
 public class TriggerDecision : MonoBehaviour, DecisionTree.Listener {
 
 	public ChoicePanel choicePanel;
-	public Canvas canvas;
 
 	// Use this for initialization
 	void Start ()
@@ -16,8 +15,6 @@ public class TriggerDecision : MonoBehaviour, DecisionTree.Listener {
 	}
 	
 	public void Notify(string currentId) {
-		Debug.Log(choicePanel);
 		choicePanel.Display(false);
-		Debug.Log("LOL");
 	}
 }
