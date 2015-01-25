@@ -12,6 +12,9 @@ public static class DecisionTree {
 	private static IDecisionTreeState killDragon;
 	private static IDecisionTreeState dragonKills;
 	private static IDecisionTreeState talkToDragon;
+	private static IDecisionTreeState talkandsingToDragon;
+	private static IDecisionTreeState dragonSings;
+	private static IDecisionTreeState turnintoDragon;
 	
 	private static IDecisionTreeState current;
 
@@ -39,6 +42,9 @@ public static class DecisionTree {
 		killDragon = new DecisionTreeState("kill dragon", "");
 		dragonKills = new DecisionTreeState("dragon kills", "");
 		talkToDragon = new DecisionTreeState("talk to dragon", "");
+		talkandsingToDragon = new DecisionTreeState("talk and sing to dragon", "");
+		dragonSings = new DecisionTreeState("dragon Sings", "");
+		turnintoDragon = new DecisionTreeState ("turn into dragon","");
 		
 		current = start;
 	}
@@ -56,6 +62,11 @@ public static class DecisionTree {
 	private static void setupChoices() {
 		createChoice(start, "Kill the dragon!", killDragon);
 		createChoice(start, "Talk to the dragon", talkToDragon);
+		createChoice (talkToDragon, "Sing to the dragon", talkandsingToDragon);
+		createChoice(talkToDragon, "Kill the dragon!", killDragon);
+		createChoice (talkandsingToDragon, "Dragon wants to sing", turnintoDragon);
+		createChoice (talkandsingToDragon, "Kill the dragon!", killDragon);
+
 	}
 	
 	private static void notifyListeners(string currentId) {
