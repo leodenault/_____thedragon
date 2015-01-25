@@ -7,6 +7,7 @@ public class InitDecisionTree : MonoBehaviour {
 	public DialogueDisplay disp;
 	bool once = true;
 	bool first = true;
+	public GameObject vil1, vil2;
 	DecisionTree.Listener listener;
 	void Start () 
 	{
@@ -15,6 +16,15 @@ public class InitDecisionTree : MonoBehaviour {
 		if (DecisionTree.IsCurrentState ("start")) {
 			disp.displaytext (0);
 			once = false;
+		}
+		else
+		{
+			if(DecisionTree.IsCurrentState("Kill dragon and return home"))
+			{
+				disp.displaytext(14);
+				vil1.active = true;
+				vil2.active = true;
+			}
 		}
 	}
 	

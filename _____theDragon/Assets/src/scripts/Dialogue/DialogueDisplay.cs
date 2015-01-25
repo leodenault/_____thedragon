@@ -86,7 +86,7 @@ public class DialogueDisplay : MonoBehaviour {
 		}
 		if(displaying && !scrolling)
 		{
-			if(Input.GetAxis("Interact") != 0)
+			if(Input.GetKeyDown(KeyCode.Space))
 			{
 				displaying = false;
 				spot = 0;
@@ -150,6 +150,10 @@ public class DialogueDisplay : MonoBehaviour {
 		if (dialogueNumber == 13) {
 			return DDialog[18]+"\n"+DDialog[19];
 		}
+
+		if (dialogueNumber == 14) {
+			return KDialog[5]+"\n"+DDialog[6];
+		}
 		return ""; //placeholder
 	}
 
@@ -198,7 +202,7 @@ public class DialogueDisplay : MonoBehaviour {
 			}*/
 		//}
 		TextDisp.transform.parent.active = true;
-	
+		TextDisp.transform.active = true;
 	}
 
 	IEnumerator keyPress (bool pressed) {

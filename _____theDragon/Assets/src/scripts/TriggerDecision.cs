@@ -4,16 +4,20 @@ using System.Collections;
 public class TriggerDecision : DecisionTree.Listener {
 
 	ChoicePanel choicePanel;
-
+	string[] test;
 	public TriggerDecision(ChoicePanel choicePanel) {
 		this.choicePanel = choicePanel;
 	}
 
 	public void Trigger()
 	{
+		
 		DecisionTree.registerListener(this);
-		choicePanel.GenerateOptions(DecisionTree.GetChoices().ToArray());
+		test = DecisionTree.GetChoices().ToArray();
+		Debug.Log(test.Length);
+		choicePanel.GenerateOptions(test);
 		choicePanel.Display(true);
+
 	}
 	
 	public void Notify(string currentId) {

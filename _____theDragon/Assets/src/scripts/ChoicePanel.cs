@@ -58,14 +58,15 @@ public class ChoicePanel : MonoBehaviour {
 	public void GenerateOptions(string[] textOptions) {
 		clearChildren();
 		
-		if (index == NONE) {
+		//if (index == NONE) {
 			options = new List<Text>();
 			foreach (string textOption in textOptions) {
 				Text option = Text.Instantiate(optionText) as Text;
 				option.text = textOption;
 				option.transform.SetParent(transform, false);
 				options.Add(option);
-			}
+				//Debug.Log(textOption);
+		//	}
 			
 			setIndex(0, 0);
 		}
