@@ -17,6 +17,7 @@ public class backgroundMusic : MonoBehaviour {
 		bckgrnd.Play();
 
 		DontDestroyOnLoad(this.gameObject);
+		Debug.Log("went");
 	}
 	
 	// Update is called once per frame
