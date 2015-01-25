@@ -2,6 +2,10 @@
 
 
 public static class DecisionTree {
+	public interface Listener {
+		void Notify(string currentId);
+	}
+	
 	private static IDictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>> stateChoiceToState;
 
 	private static IDecisionTreeState start;
@@ -13,12 +17,14 @@ public static class DecisionTree {
 
 	private static ChoiceTracker choiceTracker;
 	private static EpilogData epilogData;
+	private static List<Listener> listeners;
 	
 	public static void Init() {
 		if (!init) {
 			stateChoiceToState = new Dictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>>();
 			choiceTracker = new ChoiceTracker();
 			epilogData = new EpilogData(choiceTracker);
+			listeners = new List<Listener>();
 			
 			initStates();
 			setupChoices();
@@ -48,6 +54,16 @@ public static class DecisionTree {
 		createChoice(start, "NOPE", start);
 	}
 	
+	private static void notifyListeners(string currentId) {
+		foreach (Listener listener in listeners) {
+			listener.Notify(currentId);
+		}
+	}
+	
+	public static void registerListener(Listener listener) {
+		listeners.Add(listener);
+	}
+	
 	public static List<string> GetChoices() {
 		return current.GetChoices();
 	}
@@ -55,6 +71,7 @@ public static class DecisionTree {
 	public static void SelectChoice(string choice) {
 		choiceTracker.AddState(current);
 		current = stateChoiceToState[current][choice];
+		notifyListeners(current.GetId());
 	}
 	
 	public static string getCurrentState()
