@@ -16,7 +16,7 @@ public class sheepBaa : MonoBehaviour {
 
 	void Interaction()
 	{
-		Debug.Log("went");
+		//Debug.Log("went");
 		baa.Play();
 	}
 }
