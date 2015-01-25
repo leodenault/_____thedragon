@@ -67,7 +67,7 @@ public class CharacterControls2 : MonoBehaviour {
 	{
 		Vector3 moveDir = new Vector3(speed * 2f * Input.GetAxis("Horizontal") ,0, speed * Input.GetAxis("Vertical")); 
 
-		if(!transistioning  && !disp.displaying && (choice == null || !choice.Displaying))
+		if(!disp.displaying && (choice == null || !choice.Displaying))
 		{
 			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
 			{
