@@ -9,7 +9,6 @@ public class ChoicePanel : MonoBehaviour {
 	
 	private int index = NONE;
 	
-	public VerticalLayoutGroup choicePanel;
 	public Text optionText;
 	public List<Text> options;
 	
@@ -47,7 +46,7 @@ public class ChoicePanel : MonoBehaviour {
 	
 	private void clearChildren() {
 	    List<GameObject> children = new List<GameObject>();
-		foreach (Transform child in choicePanel.transform) {
+		foreach (Transform child in transform) {
 			children.Add(child.gameObject);
 		}
 		children.ForEach(child => Destroy(child));
@@ -61,7 +60,7 @@ public class ChoicePanel : MonoBehaviour {
 			foreach (string textOption in textOptions) {
 				Text option = Text.Instantiate(optionText) as Text;
 				option.text = textOption;
-				option.transform.SetParent(choicePanel.transform, false);
+				option.transform.SetParent(transform, false);
 				options.Add(option);
 			}
 			
