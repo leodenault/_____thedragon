@@ -37,6 +37,6 @@ public class DragonDialogue : MonoBehaviour {
 		database [16] = "It seems good enough for the creature, and so you say farewell.";
 		database [17] = "";
 		database [18] = "You thank the dragon, but you think you should return to thh king";
-		database [19] = "as soon as possible no that your quest is complete.";
+		database [19] = "as soon as possible now that your quest is complete.";
 	}
 }

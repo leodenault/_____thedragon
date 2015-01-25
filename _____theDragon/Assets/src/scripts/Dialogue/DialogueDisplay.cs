@@ -28,7 +28,7 @@ public class DialogueDisplay : MonoBehaviour {
 		dialogue = "";
 		//loadarrays ();
 		KDialog = new string[7];
-		KDialog [0] = "There have been reports of a disturbance in";
+		KDialog [0] = "There have been reports of a disturbance";
 		KDialog [1] = "in the village outside the grazing plains.";
 		KDialog [2] = "I need you to go investigate.";
 		KDialog [3] = "Do not fail me.";
@@ -61,7 +61,7 @@ public class DialogueDisplay : MonoBehaviour {
 		DDialog [16] = "It seems good enough for the creature, and so you say farewell.";
 		DDialog [17] = "";
 		DDialog [18] = "You thank the dragon, but you think you should return to the king";
-		DDialog [19] = "as soon as possible no that your quest is complete.";
+		DDialog [19] = "as soon as possible now that your quest is complete.";
 	}
 	
 	// Update is called once per frame

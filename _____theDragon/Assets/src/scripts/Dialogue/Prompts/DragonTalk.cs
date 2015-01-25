@@ -11,10 +11,10 @@ public class DragonTalk: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		DecisionTree.Init ();
-		if (DecisionTree.IsCurrentState ("talk")) {
+		/*if (DecisionTree.IsCurrentState ("talk")) {
 			disp.displaytext (5);
 			once = false;
-		}
+		}*/
 	}
 	
 	// Update is called once per frame
@@ -24,6 +24,10 @@ public class DragonTalk: MonoBehaviour {
 
 	void FixedUpdate(){
 		if (DecisionTree.IsCurrentState ("talk")) {
+			if (once && first) {
+				disp.displaytext (5);
+				once = false;
+			}
 			if (!once && first && Input.GetKey (KeyCode.Space)) {
 				disp.displaytext (6);
 				first = false;
