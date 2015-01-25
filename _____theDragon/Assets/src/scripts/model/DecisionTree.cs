@@ -57,6 +57,11 @@ public static class DecisionTree {
 		current = stateChoiceToState[current][choice];
 	}
 	
+	public static string getCurrentState()
+	{
+		return current.GetId();
+	} 
+
 	public static bool IsCurrentState(string id) {
 		return current.GetId().Equals(id);
 	}

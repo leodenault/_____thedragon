@@ -6,7 +6,7 @@ public class TriggerDecision : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-	DecisionTree.selectChoice("LOL");
+	//Debug.Log(DecisionTree.GetChoices()[0]);
 	}
 	
 	// Update is called once per frame
