@@ -10,6 +10,7 @@ public class InitDecisionTree : MonoBehaviour {
 	DecisionTree.Listener listener;
 	void Start () 
 	{
+		DecisionTree.Init();
 		DecisionTree.registerListener(listener);
 		//disp.loadArrays();
 		if (DecisionTree.IsCurrentState ("start")) {
