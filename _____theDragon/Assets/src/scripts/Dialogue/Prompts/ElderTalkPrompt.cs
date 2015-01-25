@@ -30,8 +30,6 @@ public class ElderTalkPrompt : MonoBehaviour {
 				disp.displaytext (4);
 				once = true;
 			}
-
-			//}
 		}
 		once = false;
 	}
