@@ -36,10 +36,10 @@ public class DialogueDisplay : MonoBehaviour {
 		KDialog [5] = "You make your way back to the king, who rewards you richly";
 		KDialog [6] = "for restoring balance to his kingdom.";
 		EDialog = new string[5];
-		EDialog [0] = "There is ...... a dragon ......";
-		EDialog [1] = "in... the .. .. .. please.. help us . . ...";
-		EDialog [2] = ". . . You.. must . . .  . .. the dragon.";
-		EDialog [3] = "... .. . .. . . .... ...... .... ... ...............";
+		EDialog [0] = "There is... zzz... a dragon ... in";
+		EDialog [1] = "... the .. zzzzzz .. please.. help us...";
+		EDialog [2] = "Zzzz... You must... zzzzzzzz... the dragon.";
+		EDialog [3] = "Now go! Zzzzzzzzz... .. . .. . . .... ......";
 		EDialog [4] = ".......................................";
 		DDialog = new string[20];
 		DDialog [0] = "Oh, hello there. The king must have sent you.";
