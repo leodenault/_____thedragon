@@ -10,11 +10,14 @@ public class CharacterControls : MonoBehaviour {
 	public bool transistioning;
 	public float speed;
 	public DialogueDisplay disp;
+	public Sprite up,down,left,right;
+	Vector2 pMoveDir;
 	bool grabCamX,grabCamY;
 	Vector3 pos;
 	float buffer = 0.5f;
 	void Start () 
 	{
+		//transform.GetComponent<SpriteRenderer>().sprite = transform.GetComponent<SpriteRenderer>().sprite[1] ;
 		//Debug.Log(ApplicationModel.fromDoor);
 		if(ApplicationModel.fromDoor)
 		goToDoor();
@@ -60,7 +63,7 @@ public class CharacterControls : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () 
 	{
-		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical" ), 0); 
+		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical"), 0); 
 		if(!transistioning  && !disp.displaying)
 		{
 			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
@@ -82,9 +85,63 @@ public class CharacterControls : MonoBehaviour {
 				if((moveDir.y < 0 && transform.position.y <= max.y - buffer) || (moveDir.y > 0 && transform.position.y >= min.y + buffer))
 				grabCamY = true;
 			}
+			if(Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp("w") || Input.GetKeyUp(KeyCode.DownArrow) 
+				|| Input.GetKeyUp("s") || Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp("a") ||
+				Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp("d"))
+			{
+				if(Input.GetKey(KeyCode.UpArrow) || Input.GetKey("w"))	
+				{		
+					transform.GetComponent<SpriteRenderer>().sprite = up;
+				}
+
+				if(Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))	
+				{		
+						transform.GetComponent<SpriteRenderer>().sprite = down;
+				}
+
+				if(Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp("a"))	
+				{		
+					transform.GetComponent<SpriteRenderer>().sprite = left;
+				}
+
+				if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey("d"))	
+				{		
+					transform.GetComponent<SpriteRenderer>().sprite = right;
+				}
+			}
+
+			if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown("w"))	
+			{		
+					transform.GetComponent<SpriteRenderer>().sprite = up;
+			}
+			else
+			{
+				if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown("s"))	
+				{		
+						transform.GetComponent<SpriteRenderer>().sprite = down;
+				}
+				else
+				{
+					if(Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown("a"))	
+					{		
+						transform.GetComponent<SpriteRenderer>().sprite = left;
+					}
+					else
+					{
+						if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown("d"))	
+						{		
+							transform.GetComponent<SpriteRenderer>().sprite = right;
+						}
+						
+					}
+				}
+			}
+
+
 				transform.position+= moveDir;
 		}
 	 
+	pMoveDir = (Vector2) moveDir;
 	}
 
 	public void getEdges() // finds the world position of the walls around the  tile for collision
