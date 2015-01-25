@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-
+using UnityEngine;
 
 public static class DecisionTree {
 	public interface Listener {
@@ -85,6 +85,7 @@ public static class DecisionTree {
 	
 	private static void notifyListeners(string currentId) {
 		foreach (Listener listener in listeners) {
+			if(listener != null)
 			listener.Notify(currentId);
 		}
 	}

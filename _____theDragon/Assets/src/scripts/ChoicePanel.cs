@@ -35,6 +35,7 @@ public class ChoicePanel : MonoBehaviour {
 				setIndex((index + 1) % options.Count, index);
 			} else if (Input.GetKeyDown(KeyCode.E) ||
 				Input.GetKeyDown(KeyCode.Space)) {
+			
 				DecisionTree.SelectChoice(options[index].text);
 			}
 		}
