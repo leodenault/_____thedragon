@@ -3,7 +3,7 @@
 
 public static class DecisionTree {
 	private static IDictionary<IDecisionTreeState, IDictionary<string, IDecisionTreeState>> stateChoiceToState;
-	
+
 	private static IDecisionTreeState start;
 	private static IDecisionTreeState dragon;
 	

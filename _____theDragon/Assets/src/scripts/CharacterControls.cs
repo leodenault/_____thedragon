@@ -9,9 +9,10 @@ public class CharacterControls : MonoBehaviour {
 	public Transform tile;
 	public bool transistioning;
 	public float speed;
+	public DialogueDisplay disp;
 	bool grabCamX,grabCamY;
 	Vector3 pos;
-	float buffer = 0.175f;
+	float buffer = 1f;
 	void Start () 
 	{
 		//Debug.Log(ApplicationModel.fromDoor);
@@ -60,7 +61,7 @@ public class CharacterControls : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		Vector3 moveDir = new Vector3(speed * Input.GetAxis("Horizontal"), speed * Input.GetAxis("Vertical" ), 0); 
-		if(!transistioning)
+		if(!transistioning  && !disp.displaying)
 		{
 			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
 			{
