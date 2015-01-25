@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class CharacterControls2 : MonoBehaviour {
@@ -10,7 +10,6 @@ public class CharacterControls2 : MonoBehaviour {
 	public bool transistioning;
 	public float speed;
 	public DialogueDisplay disp;
-	public ChoicePanel choicePanel;
 	public Sprite up,down,left,right;
 	Vector2 pMoveDir;
 	bool grabCamX,grabCamY;
@@ -66,7 +65,7 @@ public class CharacterControls2 : MonoBehaviour {
 	void FixedUpdate () 
 	{
 		Vector3 moveDir = new Vector3(speed * 2f * Input.GetAxis("Horizontal") ,0, speed * Input.GetAxis("Vertical")); 
-		if(!transistioning  && !disp.displaying && (choicePanel == null || !choicePanel.Displaying))
+		if(!transistioning  && !disp.displaying)
 		{
 			if((moveDir.x > 0 && transform.position.x >= max.x - buffer) || (moveDir.x < 0 && transform.position.x <= min.x + buffer) ) 
 			{
@@ -159,8 +158,9 @@ public class CharacterControls2 : MonoBehaviour {
 	{
 
 		
-		if(col.tag == "Interactable" && !disp.displaying && (choicePanel == null || !choicePanel.Displaying))
+		if(col.tag == "Interactable" && !disp.displaying)
 		{
+			
 			
 			if(Input.GetKeyDown("e") || Input.GetKeyDown(KeyCode.Space))
 			{
