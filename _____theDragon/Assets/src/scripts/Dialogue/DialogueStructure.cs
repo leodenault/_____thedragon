@@ -24,7 +24,7 @@ public class DialogueStructure : MonoBehaviour {
 	void Update () {
 
 	}
-
+	
 	string getDialogue(int dialogueNumber) {
 		//get the correct text from another function
 		return ""; //placeholder
