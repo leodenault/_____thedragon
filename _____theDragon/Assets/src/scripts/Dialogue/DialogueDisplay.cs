@@ -12,6 +12,12 @@ public class DialogueDisplay : MonoBehaviour {
 	float spot;
 	public bool displaying;
 	bool scrolling;
+	string[] KDialog;
+	string[] EDialog;
+	string[] DDialog;
+	//public KingDialogue KD;
+	//public ElderDialogue ED;
+	//public DragonDialogue DD;
 
 	// Use this for initialization
 	void Start () {
@@ -20,12 +26,18 @@ public class DialogueDisplay : MonoBehaviour {
 		scrolling = false;
 		displayedChars = 0;
 		dialogue = "";
-	//	TextDisp.text = dialogue;
-	//	displaytext();
-		//put character into dialogue state
-		//check if the dialogue has options?
-		//determine which text to display
-		//bring up portriat?
+		KDialog = new string[5];
+		KDialog [0] = "There have been reports of a disturbance in the village";
+		KDialog [1] = "outside the grazing plains. Go Investigate.";
+		KDialog [2] = "";
+		KDialog [3] = "You make your way back to the king, who rewards you richly";
+		KDialog [4] = "for restoring balance to his kingdom.";
+		EDialog = new string[5];
+		EDialog [0] = "There is a ...... dragon ......";
+		EDialog [1] = "in the ...... please help us ......";
+		EDialog [2] = ". . . You must ...... the dragon.";
+		EDialog [3] = "... .. . .. . . .... ...... .... ... ...............";
+		EDialog [4] = ".......................................";
 	}
 	
 	// Update is called once per frame
@@ -64,18 +76,31 @@ public class DialogueDisplay : MonoBehaviour {
 		//get the correct text from another function
 		if(dialogueNumber == 0)
 		{
-		return "There have been reports of a great disturbance in the village outside the graving plains. Go Investigate.";	
+			//KingDialogue KD;
+			//KD.load ();
+			return KDialog[0]+"\n"+KDialog[1];
 		}
 
 		if(dialogueNumber == 1)
 		{
-		return "There is a ... dragon ... in the ... please help us ... you must ... the dragon ...";	
+			//ElderDialogue ED;
+			//ED.load ();
+			return EDialog[0]+"\n"+EDialog[1];
 		}
-		else
+		if (dialogueNumber == 2) {
+			//ElderDialogue ED;
+			//ED.load ();
+			return EDialog [2] + "\n" + EDialog [3];
+		}
+		if (dialogueNumber == 3) {
+			//ElderDialogue ED;
+			//ED.load ();
+			return EDialog [4];
+		}
 		return "This is 20 char now. Let's see what happens when we add more characters. We'll see when we see. what happens when " +  
 				"like i give the string a ridiculous amput of text, like way more thast we wou;d eeeeeeeeeever need, but its good to test this shot ya know?"; //placeholder
 	}
-	
+
 	int getNumChars (int stringMarker) {
 		//get the correct number of characters to display on the screen
 		int charNum = textWidth;
@@ -100,9 +125,9 @@ public class DialogueDisplay : MonoBehaviour {
 	
 	public void displaytext (int num) {
 
-		bool done = false;
-		bool pressed = false;
-		int dialogueMarker = 0; //where you are in the string
+		//bool done = false;
+		//bool pressed = false;
+		//int dialogueMarker = 0; //where you are in the string
 		scrolling = true;
 		displaying = true;
 		dialogue = getDialogue (num);

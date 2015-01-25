@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class NewBehaviourScript : MonoBehaviour {
+public class DragonDialogue : MonoBehaviour {
 
 	public string[] database;
 	public int size = 20;
