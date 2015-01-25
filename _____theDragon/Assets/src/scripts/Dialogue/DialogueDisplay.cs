@@ -37,8 +37,8 @@ public class DialogueDisplay : MonoBehaviour {
 		KDialog [6] = "for restoring balance to his kingdom.";
 		EDialog = new string[5];
 		EDialog [0] = "There is ...... a dragon ......";
-		EDialog [1] = "in the .. .. .. please help us . . ... .";
-		EDialog [2] = ". . . You must . . .  . .. the dragon.";
+		EDialog [1] = "in... the .. .. .. please.. help us . . ...";
+		EDialog [2] = ". . . You.. must . . .  . .. the dragon.";
 		EDialog [3] = "... .. . .. . . .... ...... .... ... ...............";
 		EDialog [4] = ".......................................";
 		DDialog = new string[20];
